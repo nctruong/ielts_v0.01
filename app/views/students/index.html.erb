@@ -1,0 +1,44 @@
+<h3>Listing Student</h3>
+<h4><%= link_to 'New student', new_student_path %></h4>
+<table class="table-striped">
+  <tr>
+    <th>avatar</th>
+    <th>first name</th>
+    <th>last name</th>
+    <th>username</th>
+    <th>sex</th>
+    <th>phone</th>
+    <th>email</th>
+    <th>joined_date</th>
+    <th>student_level</th>
+    <th>birthday</th>
+    <th>country</th>
+    <th>created_at</th>
+    <th>updated_at</th>
+    
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= image_tag(student.avatar.thumb.url) if student.avatar %></td>
+      <td><%= student.first_name %></td>
+      <td><%= student.last_name %></td>
+      <td><%= student.username %></td>
+      <td><%= student.sex %></td>
+      <td><%= student.phone %></td>
+      <td><%= student.email %></td>
+      <td><%= student.joined_date %></td>
+      <td><%= student.student_level %></td>
+      <td><%= student.birthday %></td>
+      <td><%= student.country %></td>
+      <td><%= student.created_at %></td>
+      <td><%= student.updated_at %></td>
+      
+      <td><%= link_to 'Show', {:action => 'show', :id => student.id}, :method => :get %></td>
+      <td><%= link_to 'Edit', {:action => 'edit', :id => student.id}, :method => :get %></td>
+      <td><%= link_to 'Destroy', {:action => 'destroy', :id => student.id}, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<!-- data: { confirm: 'Are you sure?' } -->
